@@ -1,7 +1,6 @@
 package com.lciancia.app.model;
 
-public class Franch {
-    private int amount;
+public class Franch extends Money {
 
     public Franch(int amount){
         this.amount = amount;
@@ -9,10 +8,5 @@ public class Franch {
 
     Franch times(int multiplier){
         return new Franch(amount * multiplier);
-    }
-
-    public boolean equals(Object object){
-        Franch franch = (Franch) object;
-        return amount == franch.amount;
     }
 }

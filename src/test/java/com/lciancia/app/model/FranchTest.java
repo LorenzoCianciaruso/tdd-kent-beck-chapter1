@@ -13,4 +13,9 @@ public class FranchTest {
         assertEquals(new Franch(15), five.times(3));
     }
 
+    @Test
+    public void testEquality(){
+        assertTrue(new Franch(5).equals(new Franch(5)));
+        assertFalse(new Franch(5).equals(new Franch(6)));
+    }
 }
