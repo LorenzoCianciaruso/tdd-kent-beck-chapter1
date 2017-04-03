@@ -1,11 +1,12 @@
 package com.lciancia.app.model;
 
 public class Dollar extends Money {
-    public Dollar(int amount){
-        this.amount = amount;
+
+    public Dollar(int amount, String currency) {
+        super(amount, currency);
     }
 
-    Money times(int multiplier){
-        return new Dollar(amount * multiplier);
+    Money times(int multiplier) {
+        return Money.dollar(amount * multiplier);
     }
 }
