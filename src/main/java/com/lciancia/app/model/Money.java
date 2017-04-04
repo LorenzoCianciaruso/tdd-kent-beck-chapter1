@@ -1,6 +1,6 @@
 package com.lciancia.app.model;
 
-public class Money {
+public class Money implements Expression {
 
     private int amount;
     private String currency;
@@ -14,7 +14,7 @@ public class Money {
         this.currency = currency;
     }
 
-    public String currency(){
+    public String currency() {
         return this.currency;
     }
 
@@ -30,5 +30,9 @@ public class Money {
 
     static Money franc(int amount) {
         return new Money(amount, "CHF");
+    }
+
+    public Expression plus(Money addend) {
+        return new Money(amount + addend.amount, currency);
     }
 }
