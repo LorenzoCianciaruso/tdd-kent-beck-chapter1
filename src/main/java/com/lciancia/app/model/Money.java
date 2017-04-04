@@ -1,11 +1,13 @@
 package com.lciancia.app.model;
 
-abstract public class Money {
+public class Money {
 
     int amount;
     String currency;
 
-    abstract Money times(int multiplier);
+    Money times(int multiplier) {
+        return new Money(amount * multiplier, currency);
+    }
 
     public Money(int amount, String currency) {
         this.amount = amount;
@@ -19,7 +21,7 @@ abstract public class Money {
     public boolean equals(Object object) {
         Money money = (Money) object;
         return amount == money.amount
-                && getClass().equals(object.getClass());
+                && currency().equals(money.currency);
     }
 
     static Money dollar(int amount) {
@@ -28,5 +30,9 @@ abstract public class Money {
 
     static Franc franch(int amount) {
         return new Franc(amount, "CHF");
+    }
+
+    public String toString(){
+        return amount + " " + currency;
     }
 }
