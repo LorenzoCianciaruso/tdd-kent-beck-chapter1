@@ -2,8 +2,8 @@ package com.lciancia.app.model;
 
 public class Money {
 
-    int amount;
-    String currency;
+    private int amount;
+    private String currency;
 
     Money times(int multiplier) {
         return new Money(amount * multiplier, currency);
@@ -25,14 +25,10 @@ public class Money {
     }
 
     static Money dollar(int amount) {
-        return new Dollar(amount, "USD");
+        return new Money(amount, "USD");
     }
 
-    static Franc franch(int amount) {
-        return new Franc(amount, "CHF");
-    }
-
-    public String toString(){
-        return amount + " " + currency;
+    static Money franc(int amount) {
+        return new Money(amount, "CHF");
     }
 }
