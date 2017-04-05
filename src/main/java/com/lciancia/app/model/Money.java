@@ -5,16 +5,16 @@ public class Money implements Expression {
     int amount;
     private String currency;
 
-    Money times(int multiplier) {
+    Expression times(int multiplier) {
         return new Money(amount * multiplier, currency);
     }
 
-    public Money(int amount, String currency) {
+    Money(int amount, String currency) {
         this.amount = amount;
         this.currency = currency;
     }
 
-    public String currency() {
+    String currency() {
         return this.currency;
     }
 
@@ -32,12 +32,17 @@ public class Money implements Expression {
         return new Money(amount, "CHF");
     }
 
-    public Expression plus(Money addend) {
+    public Expression plus(Expression addend) {
         return new Sum(this, addend);
     }
 
     public Money reduce(Bank bank, String to) {
         int rate = bank.rate(currency, to);
         return new Money(amount / rate, to);
+    }
+
+    @Override
+    public String toString() {
+        return "Money{ amount=" + amount + ", currency='" + currency + "\'}";
     }
 }
